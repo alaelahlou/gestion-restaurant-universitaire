@@ -1,0 +1,313 @@
+/* ========================================================================
+   RU° — Restaurant Universitaire
+   Design system: "carte de cantine" — tickets-repas, tampons, plateau
+   ======================================================================== */
+
+:root{
+  --ink:      #1E2A22;
+  --ink-soft: #46564A;
+  --paper:    #F6F1E4;
+  --paper-2:  #EFE8D4;
+  --mustard:  #E3A730;
+  --mustard-dark: #B87F1B;
+  --tomato:   #C1442C;
+  --tomato-dark: #8F2E1C;
+  --sage:     #6F8368;
+  --sage-dark:#4C5E45;
+  --line:     #DED2B0;
+  --white:    #FFFDF7;
+
+  --radius-card: 4px;
+  --shadow-tray: 4px 4px 0 var(--ink);
+  --shadow-tray-sm: 3px 3px 0 var(--ink);
+}
+
+*{ box-sizing: border-box; }
+
+html,body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1,h2,h3,h4{
+  font-family: 'Archivo Black', 'Work Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 .5rem;
+  color: var(--ink);
+}
+
+.mono{ font-family: 'IBM Plex Mono', monospace; }
+
+a{ color: var(--tomato); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* ---------- layout shell ---------- */
+.ru-shell{
+  display: flex;
+  min-height: 100vh;
+}
+
+.ru-sidebar{
+  width: 232px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ru-brand{
+  padding: 0 1.25rem 1.25rem;
+  border-bottom: 1px dashed rgba(246,241,228,0.25);
+  margin-bottom: 1rem;
+}
+.ru-brand .mark{
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.6rem;
+  color: var(--mustard);
+  line-height: 1;
+}
+.ru-brand .sub{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-2);
+  opacity: .7;
+}
+
+.ru-nav{ display: flex; flex-direction: column; gap: 2px; padding: 0 .75rem; }
+.ru-nav a{
+  color: var(--paper-2);
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: .6rem .75rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  border-left: 3px solid transparent;
+}
+.ru-nav a:hover{ background: rgba(246,241,228,0.08); text-decoration:none; }
+.ru-nav a.active{
+  background: rgba(227,167,48,0.14);
+  border-left-color: var(--mustard);
+  color: var(--mustard);
+}
+.ru-nav .dot{ width:6px; height:6px; border-radius:50%; background: currentColor; opacity:.6; }
+
+.ru-main{
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 2.5rem 3rem;
+}
+
+.ru-topbar{
+  display:flex;
+  align-items:flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ink);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.ru-topbar h1{ font-size: 1.5rem; margin:0; }
+.ru-topbar .kicker{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink-soft);
+  display:block;
+  margin-bottom: .25rem;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display: inline-flex;
+  align-items:center;
+  gap:.4rem;
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: .6rem 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-tray-sm);
+  transition: transform .08s ease;
+}
+.btn:hover{ text-decoration:none; transform: translate(1px,1px); box-shadow: 2px 2px 0 var(--ink); }
+.btn:active{ transform: translate(3px,3px); box-shadow: none; }
+.btn-primary{ background: var(--mustard); border-color: var(--ink); }
+.btn-danger{ background: var(--tomato); color: var(--white); border-color: var(--ink); }
+.btn-ghost{ background: transparent; box-shadow:none; }
+.btn-ghost:hover{ background: var(--paper-2); transform:none; box-shadow:none; }
+.btn-sm{ padding:.35rem .65rem; font-size: 11px; }
+
+/* ---------- cards / trays ---------- */
+.tray{
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-tray);
+  padding: 1.25rem 1.4rem;
+}
+
+.stat-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+.stat-card{
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-card);
+  padding: 1.1rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card .n{
+  font-family:'Archivo Black', sans-serif;
+  font-size: 2.1rem;
+  color: var(--mustard);
+  line-height: 1;
+}
+.stat-card .l{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--paper-2);
+  opacity: .8;
+  margin-top:.35rem;
+  display:block;
+}
+
+/* ---------- tables ---------- */
+.ru-table-wrap{ background: var(--white); border:2px solid var(--ink); border-radius: var(--radius-card); overflow:hidden; }
+table.ru-table{ width:100%; border-collapse: collapse; }
+.ru-table thead th{
+  text-align:left;
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--paper);
+  background: var(--ink);
+  padding: .7rem 1rem;
+}
+.ru-table tbody td{
+  padding: .65rem 1rem;
+  border-top: 1px dashed var(--line);
+  font-size: 14px;
+  vertical-align: middle;
+}
+.ru-table tbody tr:hover{ background: var(--paper-2); }
+.ru-table .price{ font-family:'IBM Plex Mono', monospace; }
+
+/* ---------- stamp / badge ---------- */
+.stamp{
+  display:inline-block;
+  font-family:'Archivo Black', sans-serif;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: .3rem .55rem;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  transform: rotate(-2deg);
+}
+.stamp-ok{ color: var(--sage-dark); }
+.stamp-wait{ color: var(--mustard-dark); }
+.stamp-full{ color: var(--tomato-dark); }
+
+/* ---------- forms ---------- */
+.ru-form{ max-width: 560px; }
+.field{ margin-bottom: 1.15rem; }
+.field label{
+  display:block;
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-soft);
+  margin-bottom: .35rem;
+}
+.field input[type=text],
+.field input[type=number],
+.field input[type=date],
+.field select,
+.field textarea{
+  width:100%;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  background: var(--white);
+  padding: .6rem .7rem;
+  font-family:'Work Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+}
+.field textarea{ min-height: 100px; resize: vertical; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus{ outline: 3px solid var(--mustard); outline-offset: 1px; }
+.field-hint{ font-size: 12px; color: var(--ink-soft); margin-top:.3rem; }
+
+.check-row{
+  display:flex; align-items:center; gap:.5rem;
+  padding: .4rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+.check-row:last-child{ border-bottom:none; }
+.check-row input{ width:16px; height:16px; accent-color: var(--mustard-dark); }
+
+/* ---------- alerts / empty ---------- */
+.alert{
+  border:2px solid var(--tomato);
+  background: #FBEAE6;
+  color: var(--tomato-dark);
+  padding: .8rem 1rem;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+  font-size: 14px;
+}
+.empty{
+  text-align:center;
+  padding: 3rem 1rem;
+  color: var(--ink-soft);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-card);
+}
+.empty .big{ font-family:'Archivo Black', sans-serif; font-size:1rem; color:var(--ink); margin-bottom:.4rem; }
+
+/* ---------- ticket perforation divider ---------- */
+.perf{
+  height: 12px;
+  background-image: radial-gradient(circle, var(--paper) 4px, transparent 4.5px);
+  background-size: 16px 16px;
+  background-position: -4px 0;
+  margin: 0 -1.4rem;
+}
+
+@media (max-width: 860px){
+  .ru-shell{ flex-direction: column; }
+  .ru-sidebar{ width:100%; flex-direction: row; overflow-x:auto; padding: .75rem; }
+  .ru-brand{ display:none; }
+  .ru-nav{ flex-direction: row; padding:0; }
+  .ru-main{ padding: 1.5rem 1.25rem; }
+}
