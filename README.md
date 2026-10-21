@@ -49,7 +49,7 @@ Application web de gestion de restaurant universitaire développée avec **Larav
 ```
    L'application sera accessible sur `http://127.0.0.1:8000`.
 
-## 👤 Auteur
+##  Auteur
 
 **Alae Lahlou**  
 GitHub : [@alaelahlou](https://github.com/alaelahlou)
